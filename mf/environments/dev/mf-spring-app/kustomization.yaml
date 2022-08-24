@@ -1,7 +1,7 @@
 resources:
  - ../../base/mf-spring-app
- - configmap/configmap.yaml
- - configmap/configmap-ccdt.yaml
+ #- configmap/configmap.yaml
+ #- configmap/configmap-ccdt.yaml
  # - deployment/hooks/post-sync-job.yaml
  # - certificates/dev-mf-client-certificate.yaml
  # - certificates/dev-mf-server-certificate.yaml
