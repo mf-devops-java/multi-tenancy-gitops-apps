@@ -51,7 +51,7 @@ spec:
     - name: git-pr
       default: "false"
     - name: yaml
-      default: "kubernetes"
+      default: "kustomize/base"
   results:
     - name: service-port
     - name: resource-type
