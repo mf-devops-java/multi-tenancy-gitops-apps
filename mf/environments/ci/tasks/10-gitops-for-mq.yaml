@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: ibm-gitops-for-mf
+  name: ibm-gitops-for-mq
   annotations:
     description: Generates mf artifacts
     app.openshift.io/description: Generates mf artifacts
