@@ -1,0 +1,60 @@
+resources:
+#- certificates/ci-mf-client-certificate.yaml
+#- certificates/ci-mf-server-certificate.yaml
+- configmaps/gitops-repo-configmap.yaml
+#- eventlisteners/cntk-event-listener.yaml
+#- triggerbindings/cntk-binding.yaml
+#- triggertemplates/mf-qm-dev.yaml
+#- triggertemplates/mf-spring-app-dev.yaml
+#- pipelines/mf-metric-samples-dev-pipeline.yaml
+- pipelines/ibm-test-pipeline-for-dev.yaml
+- pipelines/ibm-test-pipeline-for-stage.yaml
+#- pipelines/java-maven-dev-pipeline.yaml
+- pipelines/mf-pipeline-dev.yaml
+- pipelines/mf-spring-app-dev-pipeline.yaml
+- roles/custom-pipeline-sa-clusterrole.yaml
+- roles/custom-pipeline-sa-role.yaml
+- roles/custom-ci-pipeline-sa-rolebinding.yaml
+- roles/custom-dev-pipeline-sa-rolebinding.yaml
+- roles/custom-staging-pipeline-sa-rolebinding.yaml
+- roles/custom-prod-pipeline-sa-rolebinding.yaml
+#- routes/cntk-route.yaml
+#- secrets/artifactory-access-secret.yaml
+- secrets/git-credentials-secret.yaml
+- secrets/ibm-entitled-registry-credentials-secret.yaml
+#- secrets/mf-client-jks-password-secret.yaml
+- tasks/10-gitops.yaml
+- tasks/10-gitops-for-mf.yaml
+- tasks/10-gitops-promotion.yaml
+- tasks/11-app-name.yaml
+- tasks/12-functional-tests.yaml
+- tasks/13-jmeter-performance-test.yaml
+- tasks/13-cphtestp-performance-test.yaml
+- tasks/4-smoke-tests-mf.yaml
+- tasks/4-smoke-tests.yaml
+- tasks/ibm-build-tag-push-v2-6-13.yaml
+- tasks/ibm-helm-release-v2-6-13.yaml
+- tasks/ibm-img-release-v2-6-13.yaml
+- tasks/ibm-img-scan-v2-6-13.yaml
+- tasks/ibm-java-maven-test-v2-6-13.yaml
+- tasks/ibm-setup-v2-6-13.yaml
+- tasks/ibm-tag-release-v2-6-13.yaml
+#- tasks/mf-metrics-build-tag-push.yaml
+
+# Automated promotion process triggers
+
+# - triggertemplates/mf-qm-dev-triggertemplate.yaml
+# - eventlisteners/mf-qm-dev-eventlistener.yaml
+# - routes/mf-qm-dev-route.yaml
+#
+# - triggertemplates/mf-spring-app-dev-triggertemplate.yaml
+# - eventlisteners/mf-spring-app-dev-eventlistener.yaml
+# - routes/mf-spring-app-dev-route.yaml
+#
+# - triggertemplates/mf-qm-stage-triggertemplate.yaml
+# - eventlisteners/mf-qm-stage-eventlistener.yaml
+# - routes/mf-qm-stage-route.yaml
+#
+# - triggertemplates/mf-spring-app-stage-triggertemplate.yaml
+# - eventlisteners/mf-spring-app-stage-eventlistener.yaml
+# - routes/mf-spring-app-stage-route.yaml

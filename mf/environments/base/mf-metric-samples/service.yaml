@@ -1,0 +1,20 @@
+---
+# Source: mf-metric-samples/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mf-metric-samples
+  labels:
+    app.kubernetes.io/name: mf-metric-samples
+    app.kubernetes.io/instance: mf-metric-samples
+    app: mf-metric-samples
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9157
+      targetPort: 9157
+      protocol: TCP
+      name: metrics
+  selector:
+    app.kubernetes.io/name: mf-metric-samples
+    app.kubernetes.io/instance: mf-metric-samples

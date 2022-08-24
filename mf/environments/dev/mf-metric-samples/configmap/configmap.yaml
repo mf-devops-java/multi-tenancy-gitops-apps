@@ -1,0 +1,19 @@
+---
+# Source: base/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mf-metric-samples
+  labels:
+    app.kubernetes.io/instance: mf-metric-samples
+data:
+  IBMmf_GLOBAL_USEOBJECTSTATUS: 'true'
+  IBMmf_OBJECTS_SUBSCRIPTIONS: '!$SYS*'
+  IBMmf_CONNECTION_CHANNEL: MONITORING_CHL
+  IBMmf_CONNECTION_CONNNAME: qm1-ibm-mf.dev.svc.cluster.local(1414)
+  IBMmf_OBJECTS_QUEUES: '!SYSTEM.*,!Amf.*,*'
+  IBMmf_GLOBAL_LOGLEVEL: INFO
+  IBMmf_CONNECTION_QUEUEMANAGER: QM1
+  IBMmf_OBJECTS_TOPICS: '!*'
+  IBMmf_GLOBAL_USEPUBLICATIONS: 'false'
+  IBMmf_GLOBAL_CONFIGURATIONFILE: ''

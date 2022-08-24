@@ -1,0 +1,5 @@
+resources:
+ - ../../base/mf-metric-samples
+ - configmap/configmap.yaml
+patchesStrategicMerge:
+ - mf-metric-samples/deployment.yaml

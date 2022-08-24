@@ -1,0 +1,33 @@
+apiVersion: mf.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: qm1
+  annotations:
+    argocd.argoproj.io/sync-wave: "300"
+    helm.sh/hook-weight: "300"
+spec:
+  template:
+    pod:
+      volumes:
+        - name: config-volume-scripts
+          configMap:
+            name: scripts-configmap
+            defaultMode: 0777
+        - name: dynamic-config-volume-mfsc
+          configMap:
+            name: dynamic-mfsc-configmap
+            defaultMode: 0777
+      containers:
+        - env:
+            - name: mfSNOAUT
+              value: 'yes'
+          name: qmgr
+          volumeMounts:
+          - name: config-volume-scripts
+            mountPath: /mf-config
+            readOnly: true
+            #optional: true
+          - name: dynamic-config-volume-mfsc
+            mountPath: /dynamic-mf-config-mfsc
+            readOnly: true
+            #optional: true

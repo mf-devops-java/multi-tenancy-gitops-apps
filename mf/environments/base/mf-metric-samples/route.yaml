@@ -1,0 +1,16 @@
+---
+# Source: mf-metric-samples/templates/route.yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: mf-metric-samples
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
+spec:
+  to:
+    kind: Service
+    name: mf-metric-samples
+    weight: 100
+  tls:
+    termination: edge
+  wildcardPolicy: None

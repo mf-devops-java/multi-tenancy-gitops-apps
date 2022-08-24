@@ -1,0 +1,96 @@
+---
+# Source: mf-spring-app/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mf-spring-app
+  labels:
+    app.kubernetes.io/name: mf-spring-app
+    app.kubernetes.io/instance: mf-spring-app
+    app: mf-spring-app
+    app.kubernetes.io/part-of: inventory
+    app.openshift.io/runtime: spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mf-spring-app
+      app.kubernetes.io/instance: mf-spring-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mf-spring-app
+        app.kubernetes.io/instance: mf-spring-app
+    spec:
+      serviceAccountName: mf-spring-app
+      volumes:
+      containers:
+        - name: mf-spring-app
+          image: replace:replace
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+          env:
+            - name: INGRESS_HOST
+              value: ""
+            - name: PROTOCOLS
+              value: ""
+            - name: LOG_LEVEL
+              value: "info"
+            - name: QM
+              valueFrom:
+                configMapKeyRef:
+                  key: QM
+                  name: mf-spring-app
+            - name: CHANNEL
+              valueFrom:
+                configMapKeyRef:
+                  key: CHANNEL
+                  name: mf-spring-app
+            - name: CONNECTION_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: CONNECTION_NAME
+                  name: mf-spring-app
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: QUEUE_NAME
+                  name: mf-spring-app
+            - name: APP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: APP_NAME
+                  name: mf-spring-app
+            - name: OPENTRACING_JAEGER_ENABLED
+              value: "false"
+          envFrom:
+            - configMapRef:
+                name: jaeger-config
+                optional: true
+            - secretRef:
+                name: jaeger-access
+                optional: true
+          resources:
+            null

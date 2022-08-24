@@ -1,6 +1,0 @@
-resources:
-  - deployment.yaml
-  - jaegerconfigmap.yaml
-  - route.yaml
-  - service.yaml
-  - serviceaccount.yaml

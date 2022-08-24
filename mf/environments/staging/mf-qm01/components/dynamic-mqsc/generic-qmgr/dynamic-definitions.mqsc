@@ -1,0 +1,2 @@
+* Use this file for mfSC that you want to be able to update without restarting the queue manager.
+DEFINE QLOCAL(STAGETEST.DYNAMIC.QUEUE)

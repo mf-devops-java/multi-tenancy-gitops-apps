@@ -1,0 +1,10 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: mf-spring-app-post-dev
+spec:
+  serviceAccountName: pipeline
+  triggers:
+    - name: mf-spring-app-post-dev
+      template:
+        ref: mf-spring-app-post-dev

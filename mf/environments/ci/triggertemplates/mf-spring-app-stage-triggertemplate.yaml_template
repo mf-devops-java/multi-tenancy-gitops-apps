@@ -1,0 +1,23 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  labels:
+    app: mf-spring-app-post-stage
+  name: mf-spring-app-post-stage
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        annotations:
+          argocd.argoproj.io/compare-options: IgnoreExtraneous
+          argocd.argoproj.io/sync-options: Prune=false
+        labels:
+          tekton.dev/pipeline: ibm-mf-promote-stage-prod
+        generateName: ibm-mf-promote-stage-prod-
+      spec:
+        params:
+        - name: git-url
+          value: https://github.com/${GIT_ORG}/mf-spring-app.git
+        pipelineRef:
+          name: ibm-mf-promote-stage-prod

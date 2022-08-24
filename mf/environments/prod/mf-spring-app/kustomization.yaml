@@ -1,0 +1,9 @@
+resources:
+ - ../../base/mf-spring-app
+ - configmap/configmap.yaml
+ - configmap/configmap-ccdt.yaml
+ #- certificates/prod-mf-client-certificate.yaml
+ #- certificates/prod-mf-server-certificate.yaml
+ #- secrets/mf-client-jks-password-secret.yaml
+patchesStrategicMerge:
+ - deployment/deployment.yaml

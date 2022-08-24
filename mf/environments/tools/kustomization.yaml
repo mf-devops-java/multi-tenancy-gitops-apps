@@ -1,0 +1,4 @@
+resources:
+#- certificates/mf-selfsigned-certificate/mf-self-signed-ca-certificate.yaml
+#- cluster-issuers/mf-selfsigned-clusterissuer/mf-self-signed-clusterissuer.yaml
+#- cluster-issuers/selfsigned-clusterissuer/clusterissuer.yaml

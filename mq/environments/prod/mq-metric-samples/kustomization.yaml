@@ -1,5 +1,0 @@
-resources:
- - ../../base/mq-metric-samples
- - configmap/configmap.yaml
-patchesStrategicMerge:
- - mq-spring-app/deployment.yaml

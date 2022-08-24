@@ -1,0 +1,13 @@
+---
+# Source: mf-metric-samples/templates/rolebinding.yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: mf-metric-samples
+subjects:
+  - kind: ServiceAccount
+    name: mf-metric-samples
+roleRef:
+  kind: Role
+  name: mf-metric-samples
+  apiGroup: rbac.authorization.k8s.io

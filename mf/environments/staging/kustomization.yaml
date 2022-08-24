@@ -1,0 +1,4 @@
+resources:
+  - mf-qm01/
+  - mf-metric-samples/
+  - mf-spring-app/

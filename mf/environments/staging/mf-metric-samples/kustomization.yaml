@@ -1,0 +1,5 @@
+resources:
+ - ../../base/mf-metrics-samples
+ - configmap/configmap.yaml
+patchesStrategicMerge:
+ - mf-spring-app/deployment.yaml
