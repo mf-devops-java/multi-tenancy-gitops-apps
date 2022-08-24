@@ -24,13 +24,13 @@ resources:
 - secrets/ibm-entitled-registry-credentials-secret.yaml
 #- secrets/mf-client-jks-password-secret.yaml
 - tasks/10-gitops.yaml
-- tasks/10-gitops-for-mf.yaml
+- tasks/10-gitops-for-mq.yaml
 - tasks/10-gitops-promotion.yaml
 - tasks/11-app-name.yaml
 - tasks/12-functional-tests.yaml
 - tasks/13-jmeter-performance-test.yaml
 - tasks/13-cphtestp-performance-test.yaml
-- tasks/4-smoke-tests-mf.yaml
+- tasks/4-smoke-tests-mq.yaml
 - tasks/4-smoke-tests.yaml
 - tasks/ibm-build-tag-push-v2-6-13.yaml
 - tasks/ibm-helm-release-v2-6-13.yaml
