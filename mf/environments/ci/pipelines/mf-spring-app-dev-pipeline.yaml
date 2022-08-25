@@ -148,7 +148,7 @@ spec:
           value: $(tasks.setup.results.scan-ibm)
     - name: gitops
       taskRef:
-        name: ibm-gitops-for-mf
+        name: ibm-gitops-for-mq
       runAfter:
         - img-scan
       params:
