@@ -279,6 +279,8 @@ spec:
           fi
           if [[ -f "$SOURCE_DIR/deployment.yaml" ]]; then
             cp -r "$SOURCE_DIR"/deployment.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/deployment
+          elif [[ -f "$SOURCE_DIR/service.yaml" ]]; then
+            cp -r "$SOURCE_DIR"/service.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/service
           elif [[ -f statefulset.yaml ]]; then
             cp -r "$SOURCE_DIR"/statefulset.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/deployment
           else
