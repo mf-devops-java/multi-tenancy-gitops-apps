@@ -1,5 +1,5 @@
 resources:
- - ../../base/mf-spring-app
+ #- ../../base/mf-spring-app
  #- configmap/configmap.yaml
  #- configmap/configmap-ccdt.yaml
  # - deployment/hooks/post-sync-job.yaml
