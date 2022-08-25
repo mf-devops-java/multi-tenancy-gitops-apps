@@ -279,8 +279,6 @@ spec:
           fi
           if [[ -f "$SOURCE_DIR/deployment.yaml" ]]; then
             cp -r "$SOURCE_DIR"/deployment.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/deployment
-          elif [[ -f "$SOURCE_DIR/service.yaml" ]]; then
-            cp -r "$SOURCE_DIR"/service.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/service
           elif [[ -f statefulset.yaml ]]; then
             cp -r "$SOURCE_DIR"/statefulset.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/deployment
           else
@@ -298,7 +296,12 @@ spec:
           if ls $SOURCE_DIR/configmap*.yaml &> /dev/null; then
             cp -r "$SOURCE_DIR"/configmap*.yaml $(params.app-path)/$(params.environment)/"${SUBDIR}"/configmap
           fi
-
+          if [[ -f "$SOURCE_DIR/route.yaml" ]]; then
+            cp -r "$SOURCE_DIR"/route.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/route
+          fi
+          if [[ -f "$SOURCE_DIR/service.yaml" ]]; then
+            cp -r "$SOURCE_DIR"/service.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/service
+          fi
           if ls $SOURCE_DIR/*secret*.yaml &> /dev/null; then
             cp -r "$SOURCE_DIR"/*secret*.yaml $(params.app-path)/$(params.environment)/"${SUBDIR}"/secrets
           fi
