@@ -8,3 +8,5 @@ resources:
  # - secrets/mf-client-jks-password-secret.yaml
 patchesStrategicMerge:
  - deployment/deployment.yaml
+ - route/route.yaml
+ - service/service.yaml
