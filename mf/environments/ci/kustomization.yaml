@@ -9,7 +9,7 @@ resources:
 #- pipelines/mf-metric-samples-dev-pipeline.yaml
 - pipelines/ibm-test-pipeline-for-dev.yaml
 - pipelines/ibm-test-pipeline-for-stage.yaml
-#- pipelines/java-maven-dev-pipeline.yaml
+- pipelines/java-maven-dev-pipeline.yaml
 - pipelines/mf-pipeline-dev.yaml
 - pipelines/mf-spring-app-dev-pipeline.yaml
 - roles/custom-pipeline-sa-clusterrole.yaml
