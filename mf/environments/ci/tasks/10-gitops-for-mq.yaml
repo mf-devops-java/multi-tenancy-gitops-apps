@@ -277,9 +277,7 @@ spec:
           else
             export SOURCE_DIR="../$(params.yaml)"
           fi
-          if [[ -f "$(params.source-dir)/queuemanager.yaml" ]]; then
-            cp -r $(params.source-dir)/queuemanager.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/queuemanager
-          elif [[ -f "$SOURCE_DIR/deployment.yaml" ]]; then
+          if [[ -f "$SOURCE_DIR/deployment.yaml" ]]; then
             cp -r "$SOURCE_DIR"/deployment.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/deployment
           elif [[ -f statefulset.yaml ]]; then
             cp -r "$SOURCE_DIR"/statefulset.yaml $(params.app-path)/$(params.environment)/${SUBDIR}/deployment
