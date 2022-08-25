@@ -178,8 +178,6 @@ spec:
           value: "$(tasks.setup.results.tools-image)"
         - name : security
           value: "$(params.security)"
-        - name: ha
-          value: "$(params.ha)"
         - name: storage
           value: "$(params.storage)"
         - name: dest-environment
