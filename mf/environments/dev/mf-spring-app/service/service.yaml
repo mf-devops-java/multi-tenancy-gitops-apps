@@ -1,0 +1,21 @@
+---
+# Source: tp-sample-app/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mf-spring-app
+  labels:
+    app.kubernetes.io/name: mf-spring-app
+    helm.sh/chart: mf-spring-app-1.0.0-rc0.0.10
+    app.kubernetes.io/instance: mf-spring-app
+    app: mf-spring-app
+spec:
+  type: ClusterIP #clusterip
+  ports:
+    - port: 9080
+      targetPort: 9080
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: mf-spring-app
+    app.kubernetes.io/instance: mf-spring-app
