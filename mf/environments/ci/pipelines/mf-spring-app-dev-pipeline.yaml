@@ -178,8 +178,8 @@ spec:
           value: "$(tasks.setup.results.tools-image)"
         - name : security
           value: "$(params.security)"
-        - name: storage
-          value: "$(params.storage)"
+        # - name: storage
+        #   value: "$(params.storage)"
         - name: dest-environment
           value: "$(params.environment)"
         - name: git-pr
