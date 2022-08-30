@@ -41,6 +41,7 @@ resources:
 - tasks/ibm-setup-v2-6-13.yaml
 - tasks/ibm-tag-release-v2-6-13.yaml
 - tasks/s2i.yaml
+- pvc/s2i-pvc.yaml
 #- tasks/mf-metrics-build-tag-push.yaml
 
 # Automated promotion process triggers

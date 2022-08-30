@@ -60,12 +60,4 @@ spec:
           value: $(params.LOGLEVEL)
         - name: IMAGE
           value: $(params.IMAGE)
-  workspaces:
-    - name: shared-workspace
-      volumeClaimTemplate:
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 100Mi
+          
