@@ -12,15 +12,14 @@ spec:
   #     - name: sslcertdir
   #       optional: true
   params:
-    - name: url
+    - name: git-url
       description: The url for the git repository
-      default: https://github.com/mf-devops-java/srmobile-serverapp-mvp.git
-    - name: subdirectory
-      description: The url for the git repository
-      default: ""
-    - name: deleteExisting
-      description: The url for the git repository
-      default: "true"
+    - name: git-revision
+      description: The git revision (branch, tag, or sha) that should be built
+      default: master
+    - name: scan-image
+      description: Enable the pipeline to scan the image for vulnerabilities
+      default: "false"
     - name: BUILDER_IMAGE
       description: The url for the git repository
     - name: TLSVERIFY
@@ -30,19 +29,29 @@ spec:
     - name: IMAGE
       description: The url for the git repository
   tasks:
-    - name: fetch-repository
+    - name: setup
       taskRef:
-        name: git-clone
-      workspaces:
-        - name: output
-          workspace: shared-workspace
+        name: ibm-setup-v2-6-13
       params:
-        - name: url
-          value: $(params.url)
-        - name: subdirectory
-          value: $(params.subdirectory)
-        - name: deleteExisting
-          value: $(params.deleteExisting)
+        - name: git-url
+          value: $(params.git-url)
+        - name: git-revision
+          value: $(params.git-revision)
+        - name: scan-image
+          value: $(params.scan-image)
+    # - name: fetch-repository
+    #   taskRef:
+    #     name: git-clone
+    #   workspaces:
+    #     - name: output
+    #       workspace: shared-workspace
+    #   params:
+    #     - name: url
+    #       value: $(params.url)
+    #     - name: subdirectory
+    #       value: $(params.subdirectory)
+    #     - name: deleteExisting
+    #       value: $(params.deleteExisting)
     - name: s2i
       taskRef:
         name: s2i
