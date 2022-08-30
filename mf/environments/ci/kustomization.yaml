@@ -8,6 +8,7 @@ resources:
 #- triggertemplates/mf-spring-app-dev.yaml
 #- pipelines/mf-metric-samples-dev-pipeline.yaml
 - pipelines/ibm-test-pipeline-for-dev.yaml
+- pipelines/pipeline-run-s2i.yaml
 - pipelines/ibm-test-pipeline-for-stage.yaml
 - pipelines/java-maven-dev-pipeline.yaml
 - pipelines/mf-pipeline-dev.yaml
@@ -39,6 +40,7 @@ resources:
 - tasks/ibm-java-maven-test-v2-6-13.yaml
 - tasks/ibm-setup-v2-6-13.yaml
 - tasks/ibm-tag-release-v2-6-13.yaml
+- tasks/s2i.yaml
 #- tasks/mf-metrics-build-tag-push.yaml
 
 # Automated promotion process triggers
