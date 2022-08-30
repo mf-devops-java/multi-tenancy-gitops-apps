@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: s2i-test-pipeline-run
+  name: pipeline-run-s2i
     annotations:
       app.openshift.io/runtime: openjdk
       app.openshift.io/builder: maven
