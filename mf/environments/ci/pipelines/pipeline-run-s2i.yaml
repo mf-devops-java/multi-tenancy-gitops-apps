@@ -56,7 +56,7 @@ spec:
       taskRef:
         name: s2i
       runAfter:
-        - fetch-repository
+        - setup
       workspaces:
         - name: source
           workspace: shared-workspace
