@@ -3,42 +3,42 @@ kind: Pipeline
 metadata:
   name: s2i-test-pipeline-run
 spec:
-  pipelineSpec:
-    workspaces:
-      - name: shared-workspace
-      - name: sslcertdir
-        optional: true
-    tasks:
-      - name: fetch-repository
-        taskRef:
-          name: git-clone
-        workspaces:
-          - name: output
-            workspace: shared-workspace
-        params:
-          - name: url
-            value: https://github.com/mf-devops-java/srmobile-serverapp-mvp.git
-          - name: subdirectory
-            value: ""
-          - name: deleteExisting
-            value: "true"
-      - name: s2i
-        taskRef:
-          name: s2i
-        runAfter:
-          - fetch-repository
-        workspaces:
-          - name: source
-            workspace: shared-workspace
-        params:
-          - name: BUILDER_IMAGE
-            value: openliberty/open-liberty-s2i:latest
-          - name: TLSVERIFY
-            value: "false"
-          - name: LOGLEVEL
-            value: "10"
-          - name: IMAGE
-            value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/$(context.pipelineRun.name)
+  # # pipelineSpec:
+  #   workspaces:
+  #     - name: shared-workspace
+  #     - name: sslcertdir
+  #       optional: true
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: https://github.com/mf-devops-java/srmobile-serverapp-mvp.git
+        - name: subdirectory
+          value: ""
+        - name: deleteExisting
+          value: "true"
+    - name: s2i
+      taskRef:
+        name: s2i
+      runAfter:
+        - fetch-repository
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      params:
+        - name: BUILDER_IMAGE
+          value: openliberty/open-liberty-s2i:latest
+        - name: TLSVERIFY
+          value: "false"
+        - name: LOGLEVEL
+          value: "10"
+        - name: IMAGE
+          value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/$(context.pipelineRun.name)
   workspaces:
     - name: shared-workspace
       volumeClaimTemplate:
