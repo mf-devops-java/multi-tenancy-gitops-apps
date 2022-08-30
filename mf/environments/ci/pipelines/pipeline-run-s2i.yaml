@@ -16,7 +16,7 @@ spec:
       description: The url for the git repository
     - name: git-revision
       description: The git revision (branch, tag, or sha) that should be built
-      default: main
+      default: master
     - name: scan-image
       description: Enable the pipeline to scan the image for vulnerabilities
       default: "false"
