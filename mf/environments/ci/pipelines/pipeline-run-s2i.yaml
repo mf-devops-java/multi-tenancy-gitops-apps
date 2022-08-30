@@ -2,12 +2,33 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: s2i-test-pipeline-run
+    annotations:
+      app.openshift.io/runtime: openjdk
+      app.openshift.io/builder: maven
 spec:
   # # pipelineSpec:
   #   workspaces:
   #     - name: shared-workspace
   #     - name: sslcertdir
   #       optional: true
+  params:
+    - name: url
+      description: The url for the git repository
+      default: https://github.com/mf-devops-java/srmobile-serverapp-mvp.git
+    - name: subdirectory
+      description: The url for the git repository
+      default: ""
+    - name: deleteExisting
+      description: The url for the git repository
+      default: "true"
+    - name: BUILDER_IMAGE
+      description: The url for the git repository
+    - name: TLSVERIFY
+      description: The url for the git repository
+    - name: LOGLEVEL
+      description: The url for the git repository
+    - name: IMAGE
+      description: The url for the git repository
   tasks:
     - name: fetch-repository
       taskRef:
@@ -17,11 +38,11 @@ spec:
           workspace: shared-workspace
       params:
         - name: url
-          value: https://github.com/mf-devops-java/srmobile-serverapp-mvp.git
+          value: $(params.url)
         - name: subdirectory
-          value: ""
+          value: $(params.subdirectory)
         - name: deleteExisting
-          value: "true"
+          value: $(params.deleteExisting)
     - name: s2i
       taskRef:
         name: s2i
@@ -32,19 +53,19 @@ spec:
           workspace: shared-workspace
       params:
         - name: BUILDER_IMAGE
-          value: openliberty/open-liberty-s2i:latest
+          value: $(params.BUILDER_IMAGE)
         - name: TLSVERIFY
-          value: "false"
+          value: $(params.TLSVERIFY)
         - name: LOGLEVEL
-          value: "10"
+          value: $(params.LOGLEVEL)
         - name: IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/$(context.pipelineRun.name)
-  # workspaces:
-  #   - name: shared-workspace
-  #     volumeClaimTemplate:
-  #       spec:
-  #         accessModes:
-  #           - ReadWriteOnce
-  #         resources:
-  #           requests:
-  #             storage: 100Mi
+          value: $(params.IMAGE)
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 100Mi
