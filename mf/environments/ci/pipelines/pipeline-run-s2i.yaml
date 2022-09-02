@@ -10,7 +10,7 @@ spec:
   workspaces:
     - name: shared-workspace
     - name: sslcertdir
-        optional: true
+      optional: true
   params:
     - name: git-url
       description: The url for the git repository
