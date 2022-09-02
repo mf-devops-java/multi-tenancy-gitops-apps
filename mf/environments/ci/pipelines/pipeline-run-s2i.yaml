@@ -6,7 +6,7 @@ metadata:
     app.openshift.io/runtime: openjdk
     app.openshift.io/builder: maven
 spec:
- pipelineSpec:
+#  pipelineSpec:
   # workspaces:
   #   - name: shared-workspace
   #   - name: sslcertdir
