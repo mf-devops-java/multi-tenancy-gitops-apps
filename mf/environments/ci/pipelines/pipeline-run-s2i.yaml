@@ -7,10 +7,10 @@ metadata:
     app.openshift.io/builder: maven
 spec:
  pipelineSpec:
-  workspaces:
-    - name: shared-workspace
-    - name: sslcertdir
-      optional: true
+  # workspaces:
+  #   - name: shared-workspace
+  #   - name: sslcertdir
+  #     optional: true
   params:
     - name: git-url
       description: The url for the git repository
@@ -71,6 +71,8 @@ spec:
           value: $(params.IMAGE)
   workspaces:
     - name: shared-workspace
+    - name: sslcertdir
+      optional: true
       # volumeClaimTemplate:
       #   spec:
       #     accessModes:
