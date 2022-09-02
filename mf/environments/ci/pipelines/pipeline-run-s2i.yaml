@@ -1,16 +1,16 @@
 apiVersion: tekton.dev/v1beta1
-kind: Pipeline
+kind: PipelineRun
 metadata:
   name: pipeline-run-s2i
   annotations:
     app.openshift.io/runtime: openjdk
     app.openshift.io/builder: maven
 spec:
-  # # pipelineSpec:
-  #   workspaces:
-  #     - name: shared-workspace
-  #     - name: sslcertdir
-  #       optional: true
+ pipelineSpec:
+  workspaces:
+    - name: shared-workspace
+    - name: sslcertdir
+        optional: true
   params:
     - name: git-url
       description: The url for the git repository

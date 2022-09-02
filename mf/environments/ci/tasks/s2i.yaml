@@ -66,10 +66,10 @@ spec:
       workingDir: /gen-source
       script: |
         [[ "$(workspaces.sslcertdir.bound)" == "true" ]] && CERT_DIR_FLAG="--cert-dir $(workspaces.sslcertdir.path)"
-        buildah ${CERT_DIR_FLAG} bud --tls-verify=$(params.TLSVERIFY) --layers \
+        buildah ${CERT_DIR_FLAG} bud --storage-driver=vfs --tls-verify=$(params.TLSVERIFY) --layers \
           -f /gen-source/Dockerfile.gen -t $(params.IMAGE) .
         [[ "$(workspaces.dockerconfig.bound)" == "true" ]] && export DOCKER_CONFIG="$(workspaces.dockerconfig.path)"
-        buildah ${CERT_DIR_FLAG} push --tls-verify=$(params.TLSVERIFY) --digestfile $(workspaces.source.path)/image-digest \
+        buildah ${CERT_DIR_FLAG} push --storage-driver=vfs --tls-verify=$(params.TLSVERIFY) --digestfile $(workspaces.source.path)/image-digest \
           $(params.IMAGE) docker://$(params.IMAGE)
         cat $(workspaces.source.path)/image-digest | tee /tekton/results/IMAGE_DIGEST
       volumeMounts:
@@ -84,3 +84,4 @@ spec:
       name: varlibcontainers
     - emptyDir: {}
       name: gen-source
+      
