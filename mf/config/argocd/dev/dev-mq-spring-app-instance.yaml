@@ -13,7 +13,7 @@ spec:
   project: applications
   source:
     path: mq/environments/dev/mq-spring-app/
-    repoURL: https://github.com/mf-devops-java/mq-spring-app.git
+    repoURL: https://github.com/mf-devops-java/multi-tenancy-gitops-apps.git
     targetRevision: master
   syncPolicy:
     automated:
